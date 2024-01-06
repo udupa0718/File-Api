@@ -4,8 +4,8 @@ const auth = require('../middleware/auth')
 const adminAuth = require('../middleware/adminMiddleware')
 
 // read request
-categoryRoute.get(`/all`, auth, adminAuth, readAll) // read all category
-categoryRoute.get(`/single/:id`, auth, adminAuth, readSingle) // read single category
+categoryRoute.get(`/all`, auth, readAll) // read all category
+categoryRoute.get(`/single/:id`, auth,  readSingle) // read single category
 
 // create new category
 categoryRoute.post(`/add`, auth, adminAuth, create)
