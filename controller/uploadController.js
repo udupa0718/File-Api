@@ -17,6 +17,8 @@ cloudinary.config({
 const uploadFile = async (req, res) => {
     try {
         let pdf = "application/pdf"
+        let png = "image/png"
+        let jpeg = "image/jpeg"
         
         // if file is not linked
         if(!req.files || Object.keys(req.files).length === 0)
@@ -32,7 +34,7 @@ const uploadFile = async (req, res) => {
         }
 
         // validate file types
-        if(myFile.mimetype !== pdf) {
+        if(myFile.mimetype !== pdf && myFile.mimetype !== png && myFile.mimetype !== jpeg) {
             deleteTemp(myFile.tempFilePath)
             return res.status(StatusCodes.CONFLICT).json({ msg: `File format not supported, Allow only (pdf)`})
         }
